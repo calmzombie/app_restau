@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tw-16-emoji.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+    crossorigin=""></script>
+    <title>Eat in Paris</title>
+    <meta name="theme-color" content="#F1C40F">
+  </head>
+  <div class="containermenu" id="burgermenu">
+    <ul class="menu-list">
+      <li class="item" id="title">Menu</li>
+      <li class="item"><a href="#"><span class="tw tw-camera_with_flash"></span>Photographier un plat</a></li>
+      <li class="item"><a href="#"><span class="tw tw-busts_in_silhouette"></span>Publications récentes</a></li>
+      <li class="item"><a href="#"><span class="tw tw-world_map"></span>Carte</a></li>
+      <li class="item" id="title">Restaurant par type</li>
+      <li class="item"><a href="#"><span class="tw tw-green_salad"></span>Repas léger</a></li>
+      <li class="item"><a href="#"><span class="tw tw-sushi"></span>Asiatique</a></li>
+      <li class="item"><a href="#"><span class="tw tw-hamburger"></span>Américain/Burger</a></li>
+      <li class="item"><a href="#"><span class="tw tw-runner"></span>Manger rapidement</a></li>
+      <li class="item"><a href="#"><span class="tw tw-sparkles"></span>Nouveau</a></li>
+    </ul>
+  </div>
+  <body>
+  <header>
+    <nav class="MobileMenu">
+    <img src="menu-ham.png" id="menuham">
+    <h1>Eat in Paris</h1>
+    </nav>
+  </header>
+  <div id="map">
+  </div>
+  <script type="text/javascript">
+  // initialize the map
+  var map = L.map('map');
+
+  // load a tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  	maxZoom: 19,
+  	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+L.marker([4808577,2.3515]).addTo(map)
+  .bindPopup("Paris")
+  .openPopup();
+
+/*
+map.locate({setView: true, maxZoom: 16});
+function onLocationFound(e) {
+var radius = e.accuracy / 2;*/
+
+L.marker(e.latlng).addTo(map)
+  .bindPopup("Vous êtes à " + radius + "mètres de ce point").openPopup();
+
+L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+function onLocationError(e) {
+    alert(e.message);
+}
+
+map.on('locationerror', onLocationError);*/
+
+
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="app.js"></script>
+  <script src="service-worker.js"></script>
+  </body>
+</html>
